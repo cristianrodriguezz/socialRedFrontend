@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Inter:wght@100&family=Londrina+Outline&family=Space+Grotesk:wght@600&display=swap');
+
+
+header{
+  position: sticky;
+  animation: enhance-header  linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0 60px;
+}
+header nav > li {
+  font-family: 'Bungee Shade', sans-serif;
+  font-size: 27px;
+  letter-spacing: 2px;
+}
+#images{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)) ;
+
+}
+@keyframes enhance-header {
+  to {
+    background: rgba( 0, 0, 0, 0.75 );
+    box-shadow: 0 8px 15px 0 rgba(88, 88, 88, 0.288);
+    backdrop-filter: blur( 3.5px );
+    -webkit-backdrop-filter: blur( 3.5px );
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  
+}
+
+.loader {
+  border: 4px solid rgb(36, 36, 196);
+  border-left-color: transparent;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin89345 1s linear infinite;
+}
+
+@keyframes spin89345 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
