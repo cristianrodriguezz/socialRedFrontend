@@ -10,7 +10,8 @@ export default {
     colors : {
         'bunker': {
           logo: '#50c878',
-          body: '#222223'
+          body: '#222223',
+          white: '#fff'
         }
     }
   },

@@ -1,6 +1,7 @@
-import ListImage from "../src/components/ListImage"
-import Upload from "../src/components/Upload"
-import { useFetchPhotosByUser } from "../src/hooks/fetchPhotos"
+import ListImage from "../components/ListImage"
+import Upload from "../components/Upload"
+import { useFetchPhotosByUser } from "../hooks/fetchPhotos"
+
 
 
 const Perfil = () => {

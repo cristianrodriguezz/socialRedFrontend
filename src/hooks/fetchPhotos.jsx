@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
+const URL = import.meta.env.VITE_BACKEND_URL
+
 export const useFetchPhotosByUser = (userId) => {
   const [photos, setPhotos] = useState([])
   const getPhotos = async (userId) => {
 
     console.log(userId)
     try {
-      const response = await fetch(`http://localhost:3000/api/photos/getphotos?userId=${userId}`,);
+      const response = await fetch(`${URL}api/photos/getphotos?userId=${userId}`,);
       
       const data = await response.json();
       setPhotos(data); // Ahora se ejecutará después de actualizar el estado
@@ -19,21 +21,19 @@ export const useFetchPhotosByUser = (userId) => {
   },[userId])
 
   return { photos }
-
 }
 
-export const useFetchRandmonPhotos = (limit, page, recargar) => {
+export const useFetchRandmonPhotos = (limit, page) => {
   const [photos, setPhotos] = useState([])
   const [loading, setLoading] = useState(false)
 
-  console.log(page)
-  console.log(photos)
-  console.log(limit)
   const getPhotos = async () => {
 
     setLoading(true)
+    
     try {
-      const response = await fetch(`http://localhost:3000/api/photos/getRandomPhotos?page=${page}&limit=${limit}`);
+      const response = await fetch(`${URL}api/photos/getRandomPhotos?page=${page}&limit=${limit}`);
+
       const data = await response.json();
 
       const uniqueIds = new Set(photos.map(photo => photo.id));
@@ -47,14 +47,11 @@ export const useFetchRandmonPhotos = (limit, page, recargar) => {
     }finally{
       setLoading(false)
     }
-  };
-
+  }
 
   useEffect(() =>{
     getPhotos()
-  },[page, recargar])
-
-
+  },[page])
 
   return { photos, loading }
 
