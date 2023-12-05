@@ -1,12 +1,13 @@
 import { Link, useHref } from "react-router-dom"
 import Logo from "../icons/Logo"
+import getUserFromLocalStorage from "../utils/getUserFromLocalStorage";
+import User from "./User";
 
 
 const Header = () => {
-  const user = JSON.parse(localStorage.getItem('respuestaServidor'))?.data?.user?.id ?? null
+  const user = getUserFromLocalStorage()
   const href = useHref()
 
-  console.log(href);
 
 
   return (
@@ -16,13 +17,13 @@ const Header = () => {
       </Link>
       <nav className="list-none text-[#fff] ">
         <li>
-          {user &&<Link to='/perfil'>Perfil</Link>}
+          {user && <Link to='/perfil'><User name={user.name} lastname={user.lastname}/></Link>}
         </li>
         <li>
-          {!user &&<Link to='/register'>Registrate</Link>}
+          {!user && <Link to='/register'>Registrate</Link>}
         </li>
         <li>
-          {!user &&<Link to='/login'>Iniciar sesión</Link>}
+          {!user && <Link to='/login'>Iniciar sesión</Link>}
         </li>
       </nav>
     </header>

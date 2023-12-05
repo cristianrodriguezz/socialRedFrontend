@@ -1,8 +1,7 @@
-import { useEffect } from "react"
 import { useFetchRandmonPhotos } from "../hooks/fetchPhotos"
-import ListImage from "./ListImage"
 import Loading from "./Loading"
 import { useInfiniteScroll } from "../hooks/infiniteScroll"
+import ListPosts from "./ListPosts"
 
 
 const InfiniteScrollListImage = () => {
@@ -17,7 +16,7 @@ const InfiniteScrollListImage = () => {
 
   return (
     <>
-      <ListImage photos={photos}/>
+      <ListPosts user={photos}/>
       <div className="flex items-center justify-center py-5">
         {loading ? <Loading/> : null}
       </div>

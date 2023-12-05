@@ -1,29 +1,34 @@
 import { useEffect, useState } from "react";
-
-const URL = import.meta.env.VITE_BACKEND_URL
+import { getPhotosById } from "../utils/getPhotoById";
 
 export const useFetchPhotosByUser = (userId) => {
-  const [photos, setPhotos] = useState([])
-  const getPhotos = async (userId) => {
 
-    console.log(userId)
+  const [photos, setPhotos] = useState([])
+  const [loading, setLoading] = useState(false)
+
+
+  const getPhotos = async (userId) => {
     try {
-      const response = await fetch(`${URL}api/photos/getphotos?userId=${userId}`,);
+      const data = await getPhotosById(userId)
+      setPhotos(data)
       
-      const data = await response.json();
-      setPhotos(data); // Ahora se ejecutará después de actualizar el estado
     } catch (error) {
       console.error('Error fetching photos:', error);
+      setLoading(false)
+    }finally{
+      setLoading(false)
     }
+
   }
   useEffect(() =>{
     getPhotos(userId)
   },[userId])
 
-  return { photos }
+  return { photos, loading }
 }
 
 export const useFetchRandmonPhotos = (limit, page) => {
+  const URL = import.meta.env.VITE_BACKEND_URL
   const [photos, setPhotos] = useState([])
   const [loading, setLoading] = useState(false)
 

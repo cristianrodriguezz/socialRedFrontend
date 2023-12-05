@@ -7,14 +7,10 @@ header{
   animation-timeline: scroll(root block);
   animation-range: 0 60px;
 }
-header nav > li {
-  font-family: 'Bungee Shade', sans-serif;
-  font-size: 27px;
-  letter-spacing: 2px;
-}
+
 #images{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)) ;
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr)) ;
 
 }
 @keyframes enhance-header {

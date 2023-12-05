@@ -1,12 +1,13 @@
-import { useRef, useState } from "react"
+import {  useState } from "react"
 import axios from "axios"
+import getUserFromLocalStorage from "../utils/getUserFromLocalStorage"
 
 
 const Upload = () => {
   const [file, setFile] = useState({
     title: '',
     photo: null,
-    userId: JSON.parse(localStorage.getItem('respuestaServidor'))?.data?.user?.id ?? null
+    userId: getUserFromLocalStorage().id
   })
   const [loading , setLoading] = useState(false)
 
