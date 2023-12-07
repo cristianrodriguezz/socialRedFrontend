@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getPhoto } from "../utils/likePhoto"
+import { getPhoto } from "../utils/likeOrDislikePhoto"
 
 export const useFetchGetLikePhotosByUserName = (userId) => {
 

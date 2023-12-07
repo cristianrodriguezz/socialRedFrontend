@@ -5,7 +5,7 @@ export const getPhoto = async (userId) => {
   return data
 }
 
-export const likePhoto = async (userId, photoId, likeStatus) => {
+export const likeOrDislikePhoto = async (userId, photoId, likeStatus) => {
 
   const URL = import.meta.env.VITE_BACKEND_URL
 
