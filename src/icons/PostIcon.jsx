@@ -1,7 +1,13 @@
+import { useEffect, useState } from "react";
 
-function PostIcon() {
+function PostIcon( { color }) {
+
+  const [selected, setSelected] = useState(null)
+
+  useEffect(()=> {color ? setSelected('logo') : setSelected(null)},[color])
+
   return (
-    <div className="w-5">
+    <div className={`w-5 text-bunker-${selected}`}>
       <svg
         className="x1lliihq x1n2onr6 x5n08af"
         fill="currentColor"

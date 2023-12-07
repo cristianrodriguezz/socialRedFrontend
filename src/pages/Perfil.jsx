@@ -1,19 +1,20 @@
 import { useParams } from "react-router-dom"
 import ListImage from "../components/ListImage"
 import Upload from "../components/Upload"
-import {  useFetchPhotosByUserName } from "../hooks/fetchPhotos"
+import {  useFetchPhotosByUserName,  useFetchPhotosLikeByUserName } from "../hooks/fetchPhotos"
 import { useState } from "react"
 import PostIcon from "../icons/PostIcon"
 import ListPosts from "../components/ListPosts"
-import { useFetchGetLikePhotosByUserName } from "../hooks/likePhoto"
+import LikeIcon from "../icons/LikeIcon"
 
 
 
 const Perfil = () => {
   const [ visibility, setVisibility ] = useState(false)
+  const [showPublications, setShowPublications] = useState(true)
   const { username } = useParams()
   const { photos } = useFetchPhotosByUserName(username)
-  const { likePhoto } = useFetchGetLikePhotosByUserName(username)
+  const { likePhoto } = useFetchPhotosLikeByUserName(username)
 
   console.log(likePhoto);
 
@@ -32,12 +33,23 @@ const Perfil = () => {
       </div>
       <nav className="flex justify-center items-center mb-5">
         <ul className="flex gap-5">
-          <li className="text-bunker-white flex gap-2 justify-center items-center"><PostIcon/> Publicaciones</li>
-          <li className="text-bunker-white">Me gustas</li>
+          <li className="">
+            <label htmlFor="listPosts" className="text-bunker-white flex gap-2 justify-center items-center">
+              <input type="checkbox" className="hidden" name="listPosts" id="listPosts" onChange={(e) => setShowPublications(e.target.checked)}/>
+              <PostIcon color={showPublications}/> 
+              Publicaciones
+            </label>
+          </li>
+          <li className="text-bunker-white">
+            <label htmlFor="listlike" className="text-bunker-white flex gap-2 justify-center items-center">
+              <input type="checkbox" className="hidden" name="listlike" id="listlike" onChange={(e) => setShowPublications(e.target.checked)}/>
+              <LikeIcon color={showPublications}/> 
+              Me gustas
+            </label>
+          </li>
         </ul>
       </nav>
-      <ListPosts user={likePhoto}/>
-      <ListImage photos={photos} visibility={visibility}/>
+      { showPublications ?  <ListImage photos={photos} visibility={visibility}/> :  <ListPosts user={likePhoto}/> }
     </section>
   )
 }

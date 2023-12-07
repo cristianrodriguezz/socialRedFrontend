@@ -35,7 +35,6 @@ export const useFetchPhotosLikeByUserName = (username) => {
   const getPhotos = async (username) => {
     try {
       const data = await getLikePhotoByUser(username)
-      console.log(data);
       setLikePhoto(data)
       
     } catch (error) {
