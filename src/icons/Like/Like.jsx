@@ -1,11 +1,21 @@
-import { useIsLikePhoto } from '../../hooks/isLikePhoto'
+import { useIsLikePhoto } from '../../hooks/likePhoto'
+import getUserFromLocalStorage from '../../utils/getUserFromLocalStorage'
+import { likePhoto } from '../../utils/likePhoto'
 import './Like.css'
 
 const Like = ({ likes, photoId }) => {
-
+  const user = getUserFromLocalStorage()
   const { isLikePhoto, setIsLikePhoto } = useIsLikePhoto(likes, photoId)
 
-  const handleClick = (e) => setIsLikePhoto(e.target.checked);
+  const handleClick = (e) => {  
+    console.log(user.id);
+
+    likePhoto(user.id, photoId)
+
+    setIsLikePhoto(e.target.checked)
+  }
+
+
 
   return (
     <div className='w-10 flex gap-1 text-bunker-white p-2'>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { likePhoto } from "../utils/likePhoto"
+import { getPhoto } from "../utils/likePhoto"
 
-export const useFetchLikePhotosByUserName = (userId) => {
+export const useFetchGetLikePhotosByUserName = (userId) => {
 
 
   const [likes, setLikes] = useState([])
@@ -11,7 +11,7 @@ export const useFetchLikePhotosByUserName = (userId) => {
   const likesPhotos = async (userId) => {
 
     try {
-      const data = await likePhoto(userId)
+      const data = await getPhoto(userId)
 
       setLikes(data)
       
@@ -34,7 +34,27 @@ export const useFetchLikePhotosByUserName = (userId) => {
     
   },[userId])
 
-  // likes.some( like => like.)
-
   return { likes, loading }
+}
+
+export const useIsLikePhoto = (likes, photoId) => {
+  
+  const [isLikePhoto, setIsLikePhoto] = useState(false)
+
+  const haveLike = (likes, photoId) => {
+
+    if (Array.isArray(likes)) {
+      setIsLikePhoto(likes.some((like) => like.photo_id === photoId));
+    }
+  }
+  
+
+  useEffect(() => {
+
+    haveLike(likes,photoId)
+
+  },[likes, photoId])
+
+  return { isLikePhoto , setIsLikePhoto}
+
 }

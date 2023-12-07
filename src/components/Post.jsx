@@ -1,12 +1,15 @@
-import { useFetchLikePhotosByUserName } from "../hooks/likePhoto";
+import { useFetchGetLikePhotosByUserName } from "../hooks/likePhoto";
 import Like from "../icons/Like/Like"
+import getUserFromLocalStorage from "../utils/getUserFromLocalStorage";
 import Image from "./Image"
 import User from "./User"
 
 
 const Post = ( {user} ) => {
 
-  const { likes } = useFetchLikePhotosByUserName(user.user_id)
+  const { id } = getUserFromLocalStorage()
+
+  const { likes } = useFetchGetLikePhotosByUserName(id)
 
   return (
     <li className=" bg-bunker-card sm:p-2 rounded-xl flex flex-col gap-2">

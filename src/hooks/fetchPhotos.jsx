@@ -18,11 +18,9 @@ export const useFetchPhotosByUserName = (username) => {
     }finally{
       setLoading(false)
     }
-
   }
-  useEffect(() =>{
-    getPhotos(username)
-  },[username])
+  
+  useEffect(() =>{getPhotos(username)},[username])
 
   return { photos, loading }
 }
