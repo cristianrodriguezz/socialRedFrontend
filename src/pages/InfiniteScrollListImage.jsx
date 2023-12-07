@@ -1,7 +1,7 @@
 import { useFetchRandmonPhotos } from "../hooks/fetchPhotos"
-import Loading from "./Loading"
+import Loading from "../components/Loading"
 import { useInfiniteScroll } from "../hooks/infiniteScroll"
-import ListPosts from "./ListPosts"
+import ListPosts from "../components/ListPosts"
 
 
 const InfiniteScrollListImage = () => {
@@ -13,6 +13,7 @@ const InfiniteScrollListImage = () => {
   })
 
   const { photos, loading } = useFetchRandmonPhotos(limit, page)
+
 
   return (
     <>

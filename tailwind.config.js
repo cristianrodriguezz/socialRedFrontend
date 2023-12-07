@@ -12,7 +12,8 @@ export default {
           logo: '#50c878',
           body: '#18191a',
           white: '#fff',
-          card: '#242526'
+          card: '#242526',
+          gray: '#979797'
         }
     }
   },

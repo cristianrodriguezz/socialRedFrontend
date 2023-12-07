@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { getPhotosById } from "../utils/getPhotoById";
+import { getPhotosByUserName } from "../utils/getPhotoById";
 
-export const useFetchPhotosByUser = (userId) => {
+export const useFetchPhotosByUserName = (username) => {
 
   const [photos, setPhotos] = useState([])
   const [loading, setLoading] = useState(false)
 
 
-  const getPhotos = async (userId) => {
+  const getPhotos = async (username) => {
     try {
-      const data = await getPhotosById(userId)
+      const data = await getPhotosByUserName(username)
       setPhotos(data)
       
     } catch (error) {
@@ -21,8 +21,8 @@ export const useFetchPhotosByUser = (userId) => {
 
   }
   useEffect(() =>{
-    getPhotos(userId)
-  },[userId])
+    getPhotos(username)
+  },[username])
 
   return { photos, loading }
 }
