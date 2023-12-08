@@ -2,9 +2,12 @@ import { Link } from "react-router-dom"
 import Logo from "../icons/Logo"
 import getUserFromLocalStorage from "../utils/getUserFromLocalStorage";
 import User from "./User";
+import Menu from "./Menu";
+import {  useState } from "react";
 
 const Header = () => {
   const user = getUserFromLocalStorage()
+  const [openMenu , setOpenMenu] = useState(false)
 
 
   return (
@@ -14,7 +17,8 @@ const Header = () => {
       </Link>
       <nav className="list-none text-[#fff] ">
         <li>
-          {user && <Link to={`/perfil/username/${user.username}`}><User name={user.name} lastname={user.lastname} username={user.username}/></Link>}
+          {user && <label htmlFor="openMenu" className="cursor-pointer"><User name={user.name} lastname={user.lastname} username={user.username}/></label>}
+          <Menu open={openMenu}/>
         </li>
         <li>
           {!user && <Link to='/register'>Registrate</Link>}
@@ -23,6 +27,8 @@ const Header = () => {
           {!user && <Link to='/login'>Iniciar sesión</Link>}
         </li>
       </nav>
+
+      <input type="checkbox" name="openMenu" id="openMenu" className="hidden" onChange={ (e) => setOpenMenu(e.target.checked) }/>
     </header>
   )
 }

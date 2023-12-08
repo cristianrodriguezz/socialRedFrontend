@@ -45,7 +45,7 @@ const Upload = () => {
   }
   return (
 
-    <form onSubmit={handleSubmit} className="text-bunker-white flex flex-col py-2 2xl:px-[40rem] xl:px-[20rem] lg:px-60 md:px-36 xs:px-24 px-3 items-center space-y-4 ">
+    <form onSubmit={handleSubmit} className="text-bunker-white flex flex-col py-2 2xl:px-[40rem] xl:px-[20rem] lg:px-60 md:px-36 xs:px-24 px-3 items-center space-y-4 h-screen">
       <div className="rounded-lg border border-bunker-white shadow-sm w-full" data-v0-t="card">
         <div className="flex flex-col space-y-1.5 p-6">
           <h3 className="text-2xl font-semibold leading-none tracking-tight">Upload Photo</h3>
@@ -55,7 +55,7 @@ const Upload = () => {
           <div className="space-y-2">
             <label
               className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              htmlFor="photo-upload"
+              htmlFor="file"
             >
               Select Photo
             </label>

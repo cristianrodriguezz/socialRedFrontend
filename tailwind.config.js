@@ -13,7 +13,8 @@ export default {
           body: '#18191a',
           white: '#fff',
           card: '#242526',
-          gray: '#979797'
+          gray: '#979797',
+          hover:'#3a3b3c'
         }
     }
   },
