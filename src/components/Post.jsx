@@ -4,12 +4,12 @@ import getUserFromLocalStorage from "../utils/getUserFromLocalStorage";
 import Image from "./Image"
 import User from "./User"
 
-
 const Post = ( {user} ) => {
 
-  const { id } = getUserFromLocalStorage()
 
-  const { likes } = useFetchGetLikePhotosByUserName(id)
+  const userLocalStorage = getUserFromLocalStorage()
+
+  const { likes } = useFetchGetLikePhotosByUserName(userLocalStorage?.id)
 
   return (
     <li className=" bg-bunker-card sm:p-2 rounded-xl flex flex-col gap-2">

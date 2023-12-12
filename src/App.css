@@ -8,7 +8,13 @@ header{
   animation-range: 0 60px;
 }
 
-
+#login{
+  background: rgb(9,121,112);
+  background: -moz-linear-gradient(180deg, rgba(9,121,112,1) 26%, rgba(68,150,91,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(9,121,112,1) 26%, rgba(68,150,91,1) 100%);
+  background: linear-gradient(180deg, rgba(9,121,112,1) 26%, rgba(68,150,91,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#097970",endColorstr="#44965b",GradientType=1);
+}
 
 @keyframes enhance-header {
   to {
@@ -160,3 +166,8 @@ header{
   font-size: 20px;
   cursor: pointer;
 }
+#modalNotSession{
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.704);
+}
+

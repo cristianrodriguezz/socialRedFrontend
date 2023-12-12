@@ -9,7 +9,7 @@ const ListPosts = ( {user} ) => {
     {user?.map( user => 
       <Post user={user} key={user.id}/>
     )}
-  </ul>
+    </ul>
   )
 }
 

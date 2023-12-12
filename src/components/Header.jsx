@@ -4,6 +4,8 @@ import getUserFromLocalStorage from "../utils/getUserFromLocalStorage";
 import User from "./User";
 import Menu from "./Menu";
 import {  useState } from "react";
+import Registrarse from "./Registrarse";
+import IniciarSesion from "./IniciarSesion";
 
 const Header = () => {
   const user = getUserFromLocalStorage()
@@ -15,16 +17,16 @@ const Header = () => {
       <Link to='/'>
         <Logo/>
       </Link>
-      <nav className="list-none text-[#fff] ">
+      <nav className="list-none flex text-[#fff] ">
         <li>
-          {user && <label htmlFor="openMenu" className="cursor-pointer"><User name={user.name} lastname={user.lastname} username={user.username}/></label>}
+          {user ? <label htmlFor="openMenu" className="cursor-pointer"><User name={user.name} lastname={user.lastname} username={user.username}/></label> : null}
           <Menu open={openMenu}/>
         </li>
         <li>
-          {!user && <Link to='/register'>Registrate</Link>}
+          {!user && <Registrarse/>}
         </li>
         <li>
-          {!user && <Link to='/login'>Iniciar sesión</Link>}
+          {!user && <IniciarSesion/>}
         </li>
       </nav>
 
