@@ -1,7 +1,7 @@
 import axios from "axios"
 import { validateLogin } from "../../validators/login"
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -12,6 +12,7 @@ const Login = () => {
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const navigate = useNavigate()
 
 
   const handleSubmit = async (e) => {
@@ -34,9 +35,12 @@ const Login = () => {
     try {
       const respuesta = await axios.post(url, user)
 
-      localStorage.setItem('respuestaServidor', JSON.stringify(respuesta.data));
+      window.localStorage.setItem('respuestaServidor', JSON.stringify(respuesta.data));
+      window.dispatchEvent(new Event('storage'))
 
-      console.log('Respuesta del servidor:', respuesta.data);
+      if(respuesta.status === 200){
+        navigate('/')
+      }
 
       
     } catch (error) {

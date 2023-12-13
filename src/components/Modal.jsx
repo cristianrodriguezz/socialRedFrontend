@@ -21,7 +21,7 @@ const Modal = ({ children, notSession }) => {
         <Registrarse/>
       </nav>
       <input type="checkbox" id="close" name="close" className="hidden" checked={open} onChange={(e)=> setOpen(e.target.checked)}/>
-      <label htmlFor="close" className="absolute top-1 right-1 p-1">
+      <label htmlFor="close" className="absolute top-1 right-1 p-1 cursor-pointer">
         <div className="w-5 text-bunker-logo">
           <svg viewBox="0 0 20 20" width='100%' height='100%'  xmlns="http://www.w3.org/2000/svg">
             <path

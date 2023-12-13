@@ -16,7 +16,6 @@ const ListImage = ({ photos, visibility }) => {
     });
 
   };
-  console.log(selectedImage);
 
   const handleCloseModal = () => {
     setModalOpen(false);
