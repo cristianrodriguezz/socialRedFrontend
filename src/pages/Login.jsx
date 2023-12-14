@@ -1,5 +1,5 @@
 import axios from "axios"
-import { validateLogin } from "../../validators/login"
+import { validateLogin } from "../validators/login"
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 

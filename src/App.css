@@ -170,4 +170,7 @@ header{
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.704);
 }
+#register{
+  background: linear-gradient(180deg, rgba(9,121,112,1) 26%, rgba(68,150,91,1) 100%);
+}
 

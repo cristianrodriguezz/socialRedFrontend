@@ -11,6 +11,10 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [user, setUser] = useState(getUserFromLocalStorage());
 
+  const handleOpen = (state) => {
+    setOpenMenu(state)
+  }
+
   useEffect(() => {
     const handleStorage = () => {
       const storedData = localStorage.getItem('respuestaServidor');
@@ -29,7 +33,7 @@ const Header = () => {
       <nav className="list-none flex text-[#fff]">
         <li>
           {user ? <label htmlFor="openMenu" className="cursor-pointer"><User name={user.name} lastname={user.lastname} username={user.username} /></label> : null}
-          <Menu open={openMenu} />
+          <Menu open={openMenu} setOpenMenu={handleOpen} />
         </li>
         <li>
           {!user && <Registrarse />}
@@ -38,7 +42,7 @@ const Header = () => {
           {!user && <IniciarSesion />}
         </li>
       </nav>
-      <input type="checkbox" name="openMenu" id="openMenu" className="hidden" onChange={(e) => setOpenMenu(e.target.checked)} />
+      <input type="checkbox" name="openMenu" id="openMenu" className="hidden" onClick={() => setOpenMenu(!openMenu)} />
     </header>
   );
 };

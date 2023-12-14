@@ -15,7 +15,9 @@ export default {
           card: '#242526',
           gray: '#979797',
           hover:'#3a3b3c',
-          red: '#FF0000'
+          red: '#FF0000',
+          successBg: '#f0fdf4',
+          successText: 'rgb(22 101 52)'
         }
     }
   },

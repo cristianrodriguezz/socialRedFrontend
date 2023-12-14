@@ -17,7 +17,7 @@ function App() {
       <Routes>
           <Route path='/login' element={<Login/>}/>
           <Route path='/:username' element={<Perfil/>}/>
-          <Route path='/signup' element={<SignUp/>}/>
+          <Route path='/register' element={<SignUp/>}/>
           <Route path='/config' element={<Config/>}/>
           <Route path='/upload' element={<Upload/>}/>
           <Route path='/' element={<InfiniteScrollListImage/>}/>
