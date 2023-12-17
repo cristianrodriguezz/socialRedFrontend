@@ -56,7 +56,7 @@ const Login = () => {
 
   return (
       <main id="login" className="w-full h-screen flex flex-col items-center justify-center px-4 text-[#fff]  min-h-full">
-            <div className="max-w-sm w-full ">
+            <div className="max-w-sm w-full bg-bunker-bodySecondary  rounded-lg shadow-md p-6">
                 <div className="text-center">
                     <div className="mt-5 space-y-2">
                         <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">Iniciar sesión en tu cuenta</h3>

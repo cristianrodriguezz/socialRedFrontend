@@ -17,7 +17,8 @@ export default {
           hover:'#3a3b3c',
           red: '#FF0000',
           successBg: '#f0fdf4',
-          successText: 'rgb(22 101 52)'
+          successText: 'rgb(22 101 52)',
+          bodySecondary: '#1c1d1e'
         }
     }
   },

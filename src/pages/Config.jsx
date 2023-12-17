@@ -2,7 +2,7 @@
 
 const Config = () => {
   return (
-    <div className="text-bunker-logo">asdasdasdasdasd</div>
+    <div className="text-bunker-logo h-screen">asdasdasdasdasd</div>
   )
 }
 

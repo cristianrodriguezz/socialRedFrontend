@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { userRegisterSchema } from '../validators/userRegisterSchema';
 import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
-import  Success  from '../icons/Success';
+import  ModalOk from '../components/ModalOk';
+
 
 const SignUp = () => {
   const URL = import.meta.env.VITE_BACKEND_URL;
@@ -12,16 +13,18 @@ const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(userRegisterSchema) });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const dialog = document.getElementById('isRegisterOk');
+
   
   const onSubmit = async (data) => {
+    const dialog = document.getElementById('isRegisterOk');
     const user = {
       name: data.name,
       lastname: data.lastname,
       email: data.email,
       password: data.password,
       username: data.username
-    };
+    }
+
     setLoading(true)
 
     try {
@@ -41,7 +44,10 @@ const SignUp = () => {
   return (
     <>
     <div className="flex flex-col items-center justify-center h-screen text-bunker-white">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+    <ModalOk button={'Ir a iniciar sesión'} location={'/login'} id='isRegisterOk'>
+      ¡Te registraste con éxito!
+    </ModalOk>
+      <div className="w-full max-w-md bg-bunker-bodySecondary  rounded-lg shadow-md p-6">
         <h2 className="text-5xl text-center font-bold mb-4 ">Registrarse</h2>
         <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
           <p className="h-6 mb-2 text-center text-bunker-red ">{error}</p>
@@ -60,18 +66,12 @@ const SignUp = () => {
           <input placeholder="Confirmar contraseña" {...register('confirmPassword')} className="bg-gray-100 text-bunker-body  border-0 rounded-md p-2 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" type="password"/>
           <p className="h-6 flex items-center justify-start text-bunker-red">{errors.confirmPassword?.message && errors.confirmPassword?.message}</p>
           <p className="text-bunker-gray  mt-4"> ¿Ya tenes una cuenta? <Link className="text-sm text-blue-500 -200 hover:underline mt-4" to='/login'>Iniciá sesión</Link></p>
-          <input type='submit' disabled={loading} value={!loading ? 'Registrarse' : 'Cargando...'} className="bg-gradient-to-r cursor-pointer from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150" />
+          <input type='submit' disabled={loading} value={!loading ? 'Registrarse' : 'Cargando...'} className="bg-bunker-logo px-3 py-2 rounded-lg mt-3 cursor-pointer" />
         </form>
       </div>
-
+      
     </div>
-    {/* <dialog id="isRegisterOk" className="bg-bunker-successBg p-10 rounded-lg flex flex-col gap-6 items-center justify-center">
-      <div className="flex gap-2 justify-center items-center">
-        <Success/>
-        <h2 className="text-[#15803d] font-semibold">Te registraste con éxito</h2>
-      </div>
-      <Link to={'/login'} className="text-[#15803d] border-2 border-[#00ff5a2b] py-2 px-3 rounded-full">Ir a iniciar sesión</Link>
-    </dialog> */}
+
     </>
   );
 };
