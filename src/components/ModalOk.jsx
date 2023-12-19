@@ -4,7 +4,7 @@ import Success from "../icons/Success"
 
 const ModalOk = ({ children, location, button, id }) => {
   return (
-    <dialog id={id}   className="bg-bunker-successBg p-10 rounded-lg">
+    <dialog id={id}   className="bg-bunker-successBg p-10 rounded-lg modalok">
       <div className="flex gap-2 justify-center items-center">
         <Success/>
         <h2 className="text-[#15803d] font-semibold">{children}</h2>

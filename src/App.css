@@ -166,4 +166,14 @@ header{
 #register{
   background: linear-gradient(180deg, rgba(9,121,112,1) 26%, rgba(68,150,91,1) 100%);
 }
+#isRegisterOk {
+
+  z-index: 1; /* Asegura que el modal esté en un nivel superior */
+}
+.modalok::backdrop  {
+
+  background-color: rgba(20, 20, 20, 0.548); /* Color de fondo semitransparente */
+  z-index: -1; /* Coloca el pseudo-elemento detrás del contenido del componente */
+  backdrop-filter: blur(2px);
+}
 
