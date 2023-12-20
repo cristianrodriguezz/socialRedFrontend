@@ -10,14 +10,14 @@ import Loading from "../components/Loading"
 
 
 const Perfil = () => {
-  const [ visibility, setVisibility ] = useState(false)
+  const [ visibility, setVisibility ] = useState(true)
   const [showPublications, setShowPublications] = useState(true)
   const [showLikes, setShowLikes] = useState(false)
   const { username } = useParams()
   const { photos , loading } = useFetchPhotosByUserName(username)
   const { likePhoto } = useFetchPhotosLikeByUserName(username)
 
-  const handleCheckBox = e => setVisibility(e.target.checked)
+  const handleCheckBox = () => setVisibility(!visibility)
 
   const handleSelected = (e) => {
     if (e.target.name === 'listPosts') {

@@ -1,21 +1,20 @@
-import ModalOk from "../components/ModalOk";
 import useFileUploader from "../hooks/uploadPhoto";
-import getUserFromLocalStorage from "../utils/getUserFromLocalStorage";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Upload = () => {
-  const {  loading, error, handleFileChange, uploadFile, previewUrl } = useFileUploader();
-  const username = getUserFromLocalStorage().username
+  const { loading, handleFileChange, uploadFile, previewUrl } = useFileUploader();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const uploadOk = document.getElementById('uploadOk')
 
-    const responseData = await uploadFile();
+    const response = await uploadFile();
 
-    if (responseData) {
-      console.log(responseData);  
-      uploadOk.showModal()
+    if (response) {  
+      toast.success('¡Subido exitosamente!');
+    }else {
+      toast.error('Ocurrió un error inesperado, intente más tarde.');
     }
   }
 
@@ -58,11 +57,19 @@ const Upload = () => {
           >
             {!loading ? 'Subir' : 'Cargando...'}
           </button>
-          {error && <p className="text-bunker-red">Ocurrió un error, intente más tarde</p>}
         </div>
-        <ModalOk id='uploadOk' button={'Ir al perfil'} location={`../${username}`}>
-          Se subió correctamente
-        </ModalOk>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
       </div>
     </form>
 

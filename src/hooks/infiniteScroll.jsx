@@ -15,7 +15,6 @@ export const useInfiniteScroll = ({ initialPage = 1, initialLimit = 5, limitPage
 
   const handleScroll = () => {
     if (isScrollAtBottom() && page < limitPage) {
-      console.log("Estás en el fondo de la ventana. Carga más contenido aquí.");
       if (page < limitPage) {
         setPage((prev) => prev + 1);
       } else {

@@ -9,7 +9,6 @@ const useFileUploader = () => {
     userId: getUserFromLocalStorage().id, 
   });
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
   const [previewUrl, setPreviewUrl] = useState(null);
 
   const generateRandomFileName = () => {
@@ -27,6 +26,7 @@ const useFileUploader = () => {
   }
 
   const uploadFile = async () => {
+
     const apiUrl = `${url}api/photos/upload?userId=${fileData.userId}`
 
     const formData = new FormData();
@@ -38,23 +38,26 @@ const useFileUploader = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(apiUrl, formData, {
+      await axios.post(apiUrl, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
-      });
-      return response.data;
+      })
+      setPreviewUrl(null)
+      return true
     } catch (error) {
-      setError('Error al realizar la solicitud: ' + error.message);
+      return false
     } finally {
+      setPreviewUrl(null)
       setLoading(false);
+      formData.delete("photo");
+      formData.delete("userId");
     }
   };
 
   return {
     fileData,
     loading,
-    error,
     handleFileChange,
     uploadFile,
     previewUrl
