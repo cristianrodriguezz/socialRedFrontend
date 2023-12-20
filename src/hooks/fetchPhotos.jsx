@@ -10,10 +10,10 @@ export const useFetchPhotosByUserName = (username) => {
 
 
   const getPhotos = async (username) => {
+    setLoading(true)
     try {
       const data = await getPhotosByUserName(username)
       setPhotos(data)
-      
     } catch (error) {
       console.error('Error fetching photos:', error);
       setLoading(false)

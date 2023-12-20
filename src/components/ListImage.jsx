@@ -5,7 +5,7 @@ import NotPhotos from '../components/NotPhotos'
 
 import { flushSync } from 'react-dom';
 
-const ListImage = ({ photos, visibility }) => {
+const ListImage = ({ photos, visibility, loading }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -19,6 +19,7 @@ const ListImage = ({ photos, visibility }) => {
 
   }
   console.log(photos)
+  console.log(loading)
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -40,11 +41,11 @@ const ListImage = ({ photos, visibility }) => {
 
   return (
       <div>
-        {photos.length === 0 ? (
+        {photos.length === 0 && loading ? (
           <NotPhotos>
             No tienes fotos aún
           </NotPhotos>
-        ) : (
+        ) :  (
           <ul
             style={style}
             className="2xl:px-[40rem] px-1 xl:px-[20rem] lg:px-60 md:px-36 xs:px-24 items-center justify-center gap-5"
@@ -59,7 +60,7 @@ const ListImage = ({ photos, visibility }) => {
               </li>
             ))}
           </ul>
-        )}
+        ) }
     
         {modalOpen && (
           <div className="modal-overlay">

@@ -59,12 +59,12 @@ const Perfil = () => {
         </ul>
       </nav>
         {loading ? (
-          <div className="h-screen bg-bunker-body">
+          <div className="h-screen bg-bunker-body flex items-center justify-center">
             <Loading />
           </div>
         ) : (
           showPublications ? (
-            <ListImage photos={photos} visibility={visibility} />
+            <ListImage loading={loading} photos={photos} visibility={visibility} />
           ) : (
             <ListPosts user={likePhoto} />
           )
