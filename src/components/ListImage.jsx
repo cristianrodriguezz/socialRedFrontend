@@ -10,14 +10,19 @@ const ListImage = ({ photos, visibility, loading }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageClick = (userid, photo) => {
-    document.startViewTransition(() => {
-      flushSync(() => {
-        setSelectedImage({ userid, photo });
-        setModalOpen(true);
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        flushSync(() => {
+          setSelectedImage({ userid, photo });
+          setModalOpen(true)
+        })
       })
-    })
-
+    } else {
+      setSelectedImage({ userid, photo });
+      setModalOpen(true);
+    }
   }
+
   console.log(photos)
   console.log(loading)
 
@@ -66,7 +71,7 @@ const ListImage = ({ photos, visibility, loading }) => {
           <div className="modal-overlay">
             <div className="modal-content">
               <Back onClick={handleCloseModal} />
-              <img src={selectedImage.photo.link} alt={`Imagen de ${selectedImage.userid}`} />
+              <img src={selectedImage.photo.link} loading="lazy" alt={`Imagen de ${selectedImage.userid}`} />
             </div>
           </div>
         )}
