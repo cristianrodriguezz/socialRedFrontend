@@ -12,7 +12,7 @@ const Post = ( {user} ) => {
   const { likes } = useFetchGetLikePhotosByUserName(userLocalStorage?.id)
 
   return (
-    <li className=" bg-bunker-card sm:p-2 rounded-xl flex flex-col gap-2">
+    <li className=" bg-bunker-card sm:p-2 rounded-xl flex flex-col gap-2 ">
       <Link to={`/${user.username}`} className="p-4 sm:p-0">
         <User name={user.name} lastname={user.lastname} username={user.username}/>
       </Link>

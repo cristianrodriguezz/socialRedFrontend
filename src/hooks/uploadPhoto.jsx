@@ -3,17 +3,18 @@ import axios from 'axios';
 import getUserFromLocalStorage from '../utils/getUserFromLocalStorage';
 
 const useFileUploader = () => {
+  const idUser = getUserFromLocalStorage().id
   const url = import.meta.env.VITE_BACKEND_URL
   const [fileData, setFileData] = useState({
     file: null,
-    userId: getUserFromLocalStorage().id, 
+    userId: idUser, 
   });
   const [loading, setLoading] = useState(false)
   const [previewUrl, setPreviewUrl] = useState(null);
 
   const generateRandomFileName = () => {
     const randomBigInt = BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER));
-    return `file_${randomBigInt}`;
+    return `${idUser}_${randomBigInt}`;
   };
 
   const handleFileChange = (e) => {

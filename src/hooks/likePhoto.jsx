@@ -2,15 +2,14 @@ import { useEffect, useState } from "react"
 import { getPhoto } from "../utils/likeOrDislikePhoto"
 
 export const useFetchGetLikePhotosByUserName = (userId) => {
-
-
+  
   const [likes, setLikes] = useState([])
   const [loading, setLoading] = useState(false)
-
 
   const likesPhotos = async (userId) => {
 
     try {
+      
       const data = await getPhoto(userId)
 
       setLikes(data)

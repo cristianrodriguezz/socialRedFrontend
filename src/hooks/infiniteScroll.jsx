@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+
 export const useInfiniteScroll = ({ initialPage = 1, initialLimit = 5, limitPage = 4 }) => {
 
   const [limit] = useState(initialLimit)
@@ -9,8 +10,8 @@ export const useInfiniteScroll = ({ initialPage = 1, initialLimit = 5, limitPage
     const scrollTop = window.scrollY || window.pageYOffset
     const scrollHeight = document.documentElement.scrollHeight
     const clientHeight = document.documentElement.clientHeight
-
-    return scrollTop + clientHeight >= scrollHeight
+    const scroll = scrollTop +  clientHeight >= scrollHeight 
+    return scroll
   }
 
   const handleScroll = () => {
