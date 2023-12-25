@@ -6,19 +6,20 @@ import { getLikePhotoByUser } from "../utils/getLikePhotoByUser";
 export const useFetchPhotosByUserName = (username) => {
 
   const [photos, setPhotos] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
 
   const getPhotos = async (username) => {
-    setLoading(true)
+    
     try {
       const data = await getPhotosByUserName(username)
+      setLoading(false)
       setPhotos(data)
     } catch (error) {
       console.error('Error fetching photos:', error);
-      setLoading(false)
+      setLoading(true)
     }finally{
-      setLoading(false)
+      setLoading(true)
     }
   }
 

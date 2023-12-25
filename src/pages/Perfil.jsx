@@ -58,7 +58,7 @@ const Perfil = () => {
           </li>
         </ul>
       </nav>
-        {loading ? (
+        {!loading ? (
           <div className="h-screen bg-bunker-body flex items-center justify-center">
             <Loading />
           </div>

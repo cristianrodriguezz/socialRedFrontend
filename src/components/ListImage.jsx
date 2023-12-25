@@ -48,7 +48,7 @@ const ListImage = ({ photos, visibility, loading }) => {
 
   return (
       <div>
-        {photos.length === 0 && loading ? (
+        {photos.length === 0  ? (
           <NotPhotos>
             No tienes fotos aún
           </NotPhotos>
