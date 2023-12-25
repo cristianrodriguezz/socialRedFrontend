@@ -2,6 +2,7 @@ import useFileUploader from "../hooks/uploadPhoto";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { useEffect } from "react";
+import UploadImage from "../icons/UploadImage";
 
 
 const Upload = () => {
@@ -16,7 +17,7 @@ const Upload = () => {
     response ? toast.success('¡Subido exitosamente!') :  toast.error('Ocurrió un error inesperado, intente más tarde.')
     
   }
-  
+
   useEffect( () => { error && toast.error(error)},[error])
 
 
@@ -38,8 +39,8 @@ const Upload = () => {
             <label
               htmlFor="file"
             >
-              <div className="bg-bunker-logo rounded-full text-3xl text-center flex items-center justify-center w-9 font-semibold cursor-pointer">
-                +
+              <div className="bg-bunker-logo rounded-full text-3xl text-center flex items-center justify-center w-9 h-9 font-semibold cursor-pointer">
+                <UploadImage/>
               </div>
             </label>
             <input
