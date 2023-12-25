@@ -11,18 +11,41 @@ const useFileUploader = () => {
   });
   const [loading, setLoading] = useState(false)
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [error, setError] = useState('');
 
   const generateRandomFileName = () => {
     const randomBigInt = BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER));
     return `${idUser}_${randomBigInt}`;
   };
+  const validateFile = (event) => {
+    const input = event.target
+  
+    if (input.files.length > 0) {
+      const files = input.files[0]
+      const types = ['image/jpeg', 'image/png', 'image/jepg'];
+  
+      if (!types.includes(files.type)) {
+        setError('Tipo de archivo no permitido. Por favor, selecciona otro archivo.')
+        input.value = ''
+        return false
+      } else {
+        setError('');
+        return true
+      }
+    }
+  
+    return false
+  };
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-    setFileData({ ...fileData, file: e.target.files[0] })
-    if (selectedFile) {
-      const previewUrl = URL.createObjectURL(selectedFile)
-      setPreviewUrl(previewUrl);
+    if (validateFile(e)) {      
+      setFileData({ ...fileData, file: e.target.files[0] })
+
+      if (selectedFile) {
+        const previewUrl = URL.createObjectURL(selectedFile)
+        setPreviewUrl(previewUrl);
+      }
     }
   }
 
@@ -61,7 +84,8 @@ const useFileUploader = () => {
     loading,
     handleFileChange,
     uploadFile,
-    previewUrl
+    previewUrl,
+    error
   };
 };
 

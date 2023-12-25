@@ -1,22 +1,24 @@
 import useFileUploader from "../hooks/uploadPhoto";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { useEffect } from "react";
 
 
 const Upload = () => {
-  const { loading, handleFileChange, uploadFile, previewUrl } = useFileUploader();
+  const { loading, handleFileChange, uploadFile, previewUrl, error } = useFileUploader();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const response = await uploadFile();
+    const response = await uploadFile()
 
-    if (response) {  
-      toast.success('¡Subido exitosamente!');
-    }else {
-      toast.error('Ocurrió un error inesperado, intente más tarde.');
-    }
+    response ? toast.success('¡Subido exitosamente!') :  toast.error('Ocurrió un error inesperado, intente más tarde.')
+    
   }
+  
+  useEffect( () => { error && toast.error(error)},[error])
+
 
   return (
 

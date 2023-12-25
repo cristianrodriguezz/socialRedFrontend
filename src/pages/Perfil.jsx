@@ -31,7 +31,7 @@ const Perfil = () => {
 
   
   return (
-    <section id="perfil">
+    <section id="perfil" className="min-h-screen">
       <div className="flex justify-between items-center 2xl:px-[40rem] px-1 xl:px-[20rem] lg:px-60 md:px-36 xs:px-24">
         <h1 className=" text-bunker-white font-medium text-lg py-5">Gallery</h1>
         <label className="switch text-bunker-white flex gap-3 items-center">
