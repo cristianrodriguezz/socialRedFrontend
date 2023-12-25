@@ -34,12 +34,14 @@ const ListImage = ({ photos, visibility, loading }) => {
     display: 'grid',
     gap: '6px',
     gridTemplateColumns: 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))',
+
   }
 
   const threeColumn = {
     display: 'grid',
     gap: '6px',
     gridTemplateColumns: 'repeat(3, 1fr)',
+
   }
 
   const style = visibility ? oneColumn : threeColumn;
