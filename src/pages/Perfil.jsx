@@ -10,7 +10,7 @@ import Loading from "../components/Loading"
 
 
 const Perfil = () => {
-  const [ visibility, setVisibility ] = useState(true)
+  const [ visibility, setVisibility ] = useState(false)
   const [showPublications, setShowPublications] = useState(true)
   const [showLikes, setShowLikes] = useState(false)
   const { username } = useParams()
