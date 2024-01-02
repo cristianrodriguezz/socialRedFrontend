@@ -2,12 +2,45 @@
 
 
 header{
-  position: sticky;
   animation: enhance-header  linear both;
   animation-timeline: scroll(root block);
   animation-range: 0 60px;
 }
+footer{
+  background: rgba( 0, 0, 0, 0.75 );
 
+  backdrop-filter: blur( 3.5px );
+  -webkit-backdrop-filter: blur( 3.5px );
+}
+.footer-scroll-down {
+  animation: scroll-down 0.3s ease-in both;
+}
+
+.footer-scroll-up {
+  animation: scroll-up 0.3s ease-in both;
+}
+
+@keyframes scroll-down {
+  from {
+    transform: translate(-50%, 0%);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+}
+
+@keyframes scroll-up {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0%);
+    opacity: 1;
+  }
+}
 
 @keyframes enhance-header {
   to {

@@ -7,6 +7,7 @@ import InfiniteScrollListImage from './pages/InfiniteScrollListImage';
 import SignUp from './pages/SignUp';
 import Config from './pages/Config';
 import Upload from './pages/Upload';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/upload' element={<Upload/>}/>
           <Route path='/' element={<InfiniteScrollListImage/>}/>
       </Routes>
+      <Footer/>
     </>
   )
 }
